@@ -1,0 +1,31 @@
+﻿@page "/admin"
+@using QA.Shared
+
+
+
+
+
+<MudGrid Style="margin-top: 5px;">
+    <MudItem xs="12" md="12">
+        <MudSelect   Label="Question" AnchorOrigin="Origin.BottomCenter" @bind-Value="QuestionInput" Placeholder="Select a question"
+                    AdornmentIcon="@Icons.Filled.QuestionAnswer" AdornmentColor="Color.Primary"> 
+            @foreach (var question in Questions)
+            {
+                <MudSelectItem T="Question" Value="question">@question.Text</MudSelectItem>
+            }
+        </MudSelect>
+    </MudItem>
+    <MudItem xs="6" md="6">
+        <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" 
+            Color="Color.Primary" Disabled="@(!IsConnected)"
+            OnClick="Send">Send</MudButton>
+        <MudButton Variant="Variant.Filled" StartIcon="@Icons.Custom.Uncategorized.Radioactive"
+            Color="Color.Warning" Disabled="@(!IsConnected)"
+            OnClick="Terminate">Terminate</MudButton>
+    </MudItem>
+</MudGrid>
+
+
+
+
+

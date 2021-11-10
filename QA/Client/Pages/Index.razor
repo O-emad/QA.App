@@ -1,0 +1,32 @@
+﻿@page "/"
+
+
+
+<MudGrid Style="margin-top:5px;">
+    <MudItem xs="12" md="12">
+        <MudCard>
+            <MudCardContent>
+                @if (ReceivedQuestion != null)
+                {
+                    <MudText Typo="Typo.h5">@ReceivedQuestion.Text</MudText>
+                    <MudDivider DividerType="DividerType.Middle" Class="my-6"/>
+                    <MudItem xs="12" md="2">
+                        <MudRadioGroup @bind-SelectedOption="@SelectedAnswer">
+                            @foreach(var answer in ReceivedQuestion.Answers)
+                            {
+                                <MudRadio Color="Color.Primary" Option="@answer">@answer.Text</MudRadio>
+                            }
+                        </MudRadioGroup>
+                    </MudItem>
+
+                }
+                else
+                {
+
+                    <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+                    <MudText Typo="Typo.body2">Waiting for question..</MudText>
+                }
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
